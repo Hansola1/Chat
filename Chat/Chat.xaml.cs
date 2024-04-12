@@ -61,7 +61,7 @@ namespace Chat
                 }
             }
         }
-    } //git попа
+    } //git попа пися
 }
     
 
