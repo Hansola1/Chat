@@ -1,0 +1,38 @@
+﻿<Window x:Class="Chat.Auth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chat"
+           mc:Ignorable="d"
+  
+        Title="Вход" Height="500" Width="800" RenderTransformOrigin="0.5,0.5" ResizeMode="NoResize">
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform ScaleX="1"/>
+            <SkewTransform AngleX="0"/>
+            <RotateTransform/>
+            <TranslateTransform X="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
+    <Grid Background="#FF529AFF">
+        <Border MinWidth="400" MaxWidth="550" Margin="15,0,15,0" Background="White" VerticalAlignment="Center" Padding="30" CornerRadius="20">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Color="White" ShadowDepth="0"></DropShadowEffect>
+            </Border.Effect>
+
+            <StackPanel>
+                <TextBlock Text="Вход в систему" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" FontFamily="Showcard Gothic"/>
+
+                <Grid Margin="0 0 0 20">
+                    <Button Click="ButtonRegClickWin" Content="Регистрация" HorizontalAlignment="Left" Width="164" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3" Margin="0,-10,0,-22" RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS"/>
+                    <Button HorizontalAlignment="Left" Content="Войти"  Width="106" Foreground="White" Margin="180,-10,0,-23" RenderTransformOrigin="0.486,0.224" FontSize="15" BorderBrush="#FFDDDDDD" FontFamily="Trebuchet MS"/>
+                </Grid>
+                <TextBox x:Name="textBoxLogin" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" VerticalAlignment="Top" Margin="0,10,0,8" Cursor="Arrow"/>
+                <PasswordBox x:Name="passwordBox" FontFamily="Trebuchet MS" FontSize="13" Foreground="Gray" Height="30" VerticalAlignment="Bottom" Margin="0,0,0,0" Cursor="Arrow" ></PasswordBox>
+                <Button Click="ButtonAuthClick" HorizontalAlignment="Left" Content="Войти в аккаунт" Width="492" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3" Margin="0,10,0,-15"
+                        RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS" Height="34" ></Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
