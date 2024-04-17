@@ -33,27 +33,8 @@ namespace Chat
             if (login != null && password != null)
             {
 
-                MessageBox.Show("Приятного общения");
-                LogIn(login, password);
-                
-
-                /*  User authUser = null;
-                  using (AppContext DataBase = new AppContext()) 
-                  { 
-                      authUser = DataBase.Users.Where(b => b.Login == login && b.Password == password).FirstOrDefault();
-                  } 
-
-                  if (authUser != null)
-                  {
-                      MessageBox.Show("Приятного общения");
-                      ChatWin chatWindow = new ChatWin();
-                      chatWindow.Show();
-                      this.Close();
-                  }  
-                  else
-                  {
-                     
-                  } */
+                //MessageBox.Show("Приятного общения");
+                LogIn(login, password);            
             }
         }
 

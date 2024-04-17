@@ -19,12 +19,6 @@ namespace Chat
         static string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=root;";
         NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);
 
-      /*  public DbSet<User> Users { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseNpgsql(connectionString);
-        } */
-
         public void Connection()
         {
             try
@@ -57,7 +51,6 @@ namespace Chat
             return true;
         }
 
-        // Безвозвратная команда
         public bool LogginCheck(string command)
         {
             Connection();
@@ -72,6 +65,79 @@ namespace Chat
             npgSqlConnection.Close();
             return false;
         }
+
+
+
+
+        public void InputCommand(string command)
+        {
+            Connection();
+            NpgsqlCommand commandSQL = new NpgsqlCommand(command, npgSqlConnection);
+
+            commandSQL.ExecuteNonQuery();
+            npgSqlConnection.Close();
+        }
+
+        // Получение данных о сообщениях
+        public async Task<List<List<string>>> OutputMessagesCommand()
+        {
+            Connection();
+            List<List<string>> messages = new List<List<string>>();
+            List<string> name = new List<string> { "AdminName" };
+            List<string> message = new List<string> { "AdminMessage" };
+            List<string> date = new List<string> { "AdminDate" };
+            List<string> id = new List<string> { "AdminId" };
+
+            messages.Add(name);
+            messages.Add(message);
+            messages.Add(date);
+            messages.Add(id);
+
+            NpgsqlCommand commandSQL = new NpgsqlCommand("SELECT * FROM messages;", npgSqlConnection);
+            await commandSQL.ExecuteNonQueryAsync();
+            try
+            {
+                var reader = await commandSQL.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    messages[0].Add(reader.GetString(0));
+                    messages[1].Add(reader.GetString(1));
+                    messages[2].Add(reader.GetString(2));
+                    messages[3].Add(reader.GetInt32(3).ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            npgSqlConnection.Close();
+            return messages;
+        }
+        public async Task<List<List<string>>> OutputMessagesID()
+        {
+            Connection();
+            List<List<string>> messages = new List<List<string>>();
+            List<string> id = new List<string> { "AdminId" };
+            messages.Add(id);
+
+            NpgsqlCommand commandSQL = new NpgsqlCommand("SELECT * FROM messageID;", npgSqlConnection);
+            await commandSQL.ExecuteNonQueryAsync();
+            try
+            {
+                var reader = await commandSQL.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    messages[0].Add(reader.GetInt32(0).ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            npgSqlConnection.Close();
+            return messages;
+        }
+
 
         public void Close() { npgSqlConnection.Close(); }
     }

@@ -171,6 +171,9 @@
     <Compile Include="Auth.xaml.cs">
       <DependentUpon>Auth.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserUseControl\UsersMessage.xaml.cs">
+      <DependentUpon>UsersMessage.xaml</DependentUpon>
+    </Compile>
     <Page Include="Auth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +197,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserUseControl\UsersMessage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

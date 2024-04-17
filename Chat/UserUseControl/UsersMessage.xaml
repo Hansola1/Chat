@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Chat.UserUseControl.UsersMessage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chat.UserUseControl"
+             mc:Ignorable="d" d:DesignWidth="150" Height="53">
+    <Grid Background="White">
+        <StackPanel>
+            <TextBlock x:Name="SenderName" Text="{Binding SenderName}" />
+            <TextBlock x:Name="MessageText"  Text="{Binding MessageText}" />
+            <TextBlock x:Name="TimeSent" Text="{Binding TimeSent}" Width="50" Margin="0,0,-90,0" />
+        </StackPanel>
+    </Grid>
+</UserControl>

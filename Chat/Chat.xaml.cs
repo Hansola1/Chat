@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Xml;
 using Npgsql;
+using Chat.UserUseControl;
+
 namespace Chat
 {
     public partial class ChatWin : Window
@@ -22,24 +24,45 @@ namespace Chat
         public ChatWin()
         {
             InitializeComponent();
-            messageTextBox.KeyDown += MessageTextBox_KeyDown;
+           // messageTextBox.KeyDown += MessageTextBox_KeyDown;
         }
 
-        public class Message
+        private void CreateMessageBox(string name, string text, string date, string id, ItemCollection collection)
         {
-            public string Text { get; set; }
-            public string Sender { get; set; }
-            public DateTime Time { get; set; }
+            System.Windows.Controls.TextBox messageTextBox = new System.Windows.Controls.TextBox();
 
-            public Message(string text, string sender)
+            messageTextBox.Width = 400;
+            messageTextBox.TextWrapping = TextWrapping.Wrap;
+            messageTextBox.AcceptsReturn = true;
+            messageTextBox.IsReadOnly = true;
+            messageTextBox.FontFamily = new FontFamily("Comic Sans MS");
+            messageTextBox.Name = id;
+            messageTextBox.Text = $"Пользователь {name}:\n{text}\n\n{date}";
+
+            collection.Add(messageTextBox);
+        }
+
+        private async void SendToListBxButton_Click(object sender, RoutedEventArgs e)
+        {
+            string message = messageTextBox.Text;
+            if (message.Length > 0)
             {
-                Text = text;
-                Sender = sender;
-                Time = DateTime.Now;
+                List<List<string>> messages = new List<List<string>>();
+                messages = await DataBase.OutputMessagesCommand();
+
+                List<List<string>> messagesID = new List<List<string>>();
+                messagesID = await DataBase.OutputMessagesID();
+
+                DataBase.InputCommand($"INSERT INTO messages (name, textmessages, date, id) VALUES ('{Username.Text}', '{messageTextBox.Text}', '[{DateTime.Now}]', '{(messagesID[0].Count()).ToString()}');");
+                DataBase.InputCommand($"INSERT INTO messageID (id) VALUES ('{messagesID[0].Count()}');");
+
+                CreateMessageBox(Username.Text, messageTextBox.Text, $"[{DateTime.Now}]", $"idx{messageTextBox.Text.Length.ToString()}", chatListBox.Items);
+                messageTextBox.Text = string.Empty;
             }
         }
 
-        private void SendToListBxButton_Click(object sender, RoutedEventArgs e)
+
+       /* private void SendToListBxButton_Click(object sender, RoutedEventArgs e)
         {
             string message = messageTextBox.Text;
             if (!string.IsNullOrEmpty(message) && !string.IsNullOrWhiteSpace(message))
@@ -48,7 +71,6 @@ namespace Chat
                 messageTextBox.Text = "";
             }
         }
-
         private void MessageTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             string message = messageTextBox.Text;
@@ -60,8 +82,16 @@ namespace Chat
                     messageTextBox.Text = "";
                 }
             }
-        }
-    } //git попа пися
+        } */
+    } 
 }
-    
 
+
+/*private void TimeForMess()
+{
+    System.Windows.Threading.DispatcherTimer timer = new System.Windows.Threading.DispatcherTimer();
+
+    timer.Tick += new EventHandler(timerTick);
+    timer.Interval = new TimeSpan(0, 0, 5);
+    timer.Start();
+}*/
