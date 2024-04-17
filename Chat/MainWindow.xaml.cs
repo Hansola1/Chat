@@ -28,7 +28,9 @@ namespace Chat
         private void ButtonRegistClick(object sender, RoutedEventArgs e) 
         {
             string login = textBoxLogin.Text.Trim(); 
-            string password = passwordBox.Password.Trim();     //Trim - убирает пробелы
+            string password = passwordBox.Password.Trim(); 
+            string username = textBoxUserName.Text.Trim();
+            //Trim - убирает пробелы
 
             if (login.Length > 20 || login.Length < 3)
             {
@@ -47,7 +49,7 @@ namespace Chat
 
                 MessageBox.Show("Ввод корректный :)");
 
-                if(DataBase.CreateUser(login,password))
+                if(DataBase.CreateUser(login,password,username))
                 {
                     Auth authWin = new Auth();
                     authWin.Show();

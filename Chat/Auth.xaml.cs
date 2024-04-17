@@ -44,7 +44,8 @@ namespace Chat
             
             if (DataBase.LogginCheck(QueryText))
             {
-                ChatWin chatWindow = new ChatWin();
+                string userName = DataBase.GetUserName(login);
+                ChatWin chatWindow = new ChatWin(login, userName);
                 chatWindow.Show();
                 this.Close();
             }
