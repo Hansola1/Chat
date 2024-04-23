@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Net.Configuration;
 using System.Windows.Media;
 using System.Windows;
+using Chat.Data;
 //using Npgsql.EntityFrameworkCore;
 
 namespace Chat
@@ -87,25 +88,38 @@ namespace Chat
         public void SendMessage(string messageText, string login, string userName)
         {
             Connection();
-            string command = $"INSERT INTO messages (username, text, time, login) VALUES ( '{userName}', '{messageText}', '[{DateTime.Now}]', '{login}');";
+            string command = $"INSERT INTO messages (username, text, time, login) VALUES ( '{userName}', '{messageText}', '{DateTime.Now}', '{login}');";
             NpgsqlCommand commandSQL = new NpgsqlCommand(command, npgSqlConnection);
 
             commandSQL.ExecuteNonQuery();
             npgSqlConnection.Close();
         }
 
-        /*public void RequireMessage()
+        public async Task<List<MessageStorage>> RequireMessage()
         {
             Connection();
+            List<MessageStorage> message = new List<MessageStorage>();
+            string command = $"SELECT * FROM messages";
             NpgsqlCommand commandSQL = new NpgsqlCommand(command, npgSqlConnection);
             NpgsqlDataReader dataReader = commandSQL.ExecuteReader();
             while (dataReader.HasRows)
             {
+                dataReader.Read();
+                if (dataReader.IsOnRow)
+                {
+                    message.Add(new MessageStorage(dataReader.GetInt64(0).ToString(), dataReader.GetString(1),
+                        dataReader.GetString(4), dataReader.GetString(3), dataReader.GetString(2)));
 
-                dataReader.NextResult();
+                    //MessageBox.Show(dataReader.GetString(2));
+                }
+                else
+                {
+                    break;
+                }
             }
             npgSqlConnection.Close();
-        }*/
+            return message;
+        }
 
         public void InputCommand(string command)
         {
@@ -115,76 +129,6 @@ namespace Chat
             commandSQL.ExecuteNonQuery();
             npgSqlConnection.Close();
         }
-
-
-
-
-
-        // Получение данных о сообщениях
-        /*public async Task<List<List<string>>> OutputMessagesCommand()
-        {
-            Connection();
-            List<List<string>> messages = new List<List<string>>();
-
-            List<string> username = new List<string> { "AdminName" };
-            List<string> text = new List<string> { "AdminMessage" };
-            List<string> time = new List<string> { "AdminDate" };
-            List<string> id = new List<string> { "AdminId" };
-            List<string> login = new List<string> { "AdminLG" };
-
-            messages.Add(id);
-            messages.Add(username);
-            messages.Add(text);
-            messages.Add(time);
-            messages.Add(login);
-
-            NpgsqlCommand commandSQL = new NpgsqlCommand("SELECT * FROM messages;", npgSqlConnection);
-            await commandSQL.ExecuteNonQueryAsync();
-            try
-            {
-                var reader = await commandSQL.ExecuteReaderAsync();
-                while (await reader.ReadAsync())
-                {
-                    messages[0].Add(reader.GetInt64(0).ToString());
-                    messages[1].Add(reader.GetString(1));
-                    messages[2].Add(reader.GetString(2));
-                    messages[3].Add(reader.GetString(3));
-                    messages[4].Add(reader.GetString(4));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-            npgSqlConnection.Close();
-            return messages;
-        }
-
-        public async Task<List<List<string>>> OutputMessagesID()
-        {
-            Connection();
-            List<List<string>> messages = new List<List<string>>();
-            List<string> id = new List<string> { "AdminId" };
-            messages.Add(id);
-
-            NpgsqlCommand commandSQL = new NpgsqlCommand("SELECT * FROM messageID;", npgSqlConnection);
-            await commandSQL.ExecuteNonQueryAsync();
-            try
-            {
-                var reader = await commandSQL.ExecuteReaderAsync();
-                while (await reader.ReadAsync())
-                {
-                    messages[0].Add(reader.GetInt32(0).ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-            npgSqlConnection.Close();
-            return messages;
-        }*/
-
 
         public void Close() { npgSqlConnection.Close(); }
     }

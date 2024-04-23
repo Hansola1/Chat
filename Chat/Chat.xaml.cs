@@ -17,21 +17,35 @@ using Npgsql;
 using Chat.UserUseControl;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
+using System.Timers;
+using Chat.Data;
+using System.ComponentModel;
 
 namespace Chat
 {
     public partial class ChatWin : Window
     {
+        private System.Timers.Timer timer;
         DataBaseControll DataBase = new DataBaseControll();
         private string _login;
         private string _userName;
 
+        private void SetTimer()
+        {
+            // Create a timer with a two second interval.
+            timer = new System.Timers.Timer(2000);
+            // Hook up the Elapsed event for the timer. 
+            timer.Elapsed += AddMessage;
+            timer.AutoReset = true;
+            timer.Enabled = true;
+        }
 
         public ChatWin(string login, string userName)
         {
             _login = login;
             _userName = userName;
             InitializeComponent();
+            SetTimer();
            // messageTextBox.KeyDown += MessageTextBox_KeyDown;
         }
 
@@ -45,6 +59,30 @@ namespace Chat
                 messageTextBox.Text = "";
             }
         }
+
+        private async void AddMessage(object sender, ElapsedEventArgs e)
+        {
+            List<MessageStorage> test = await Task.Run(() => DataBase.RequireMessage());
+            Dispatcher.Invoke(() =>
+            {
+                
+                Messages.Items.Clear();
+
+                foreach (MessageStorage message in test)
+                { 
+                    Messages.Items.Add(new UsersMessage(message.Name, message.Text, message.Time));//Convert.ToDateTime(message.Time)));
+                    //MessageBox.Show(message.Text);
+                }
+            });
+        }
+
+
+
+        /*public static void AddMessage(Object source, ElapsedEventArgs e)
+        {
+            //DataBase.RequireMessage();
+        }*/
+
 
 
         /*private void CreateMessageBox(string name, string text, string date, string id, ItemCollection collection)

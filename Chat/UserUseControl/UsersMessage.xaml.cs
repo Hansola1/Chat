@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -18,12 +19,30 @@ namespace Chat.UserUseControl
 {
     public partial class UsersMessage : UserControl
     {
-        public UsersMessage(string senderName, string messageText, DateTime timeSent)
+        public UsersMessage(string senderName, string messageText, string timeSent)
         {
             InitializeComponent();
-            SenderName.Text = senderName;
-            MessageText.Text = messageText;
-            TimeSent.Text = timeSent.ToString("HH:mm:ss");
+            Name = senderName;
+            Text = messageText;
+            Time = timeSent; //.ToString("HH:mm:ss");
+        }
+        
+        public string Name
+        {
+            get { return SenderName.Text; }
+            set { SenderName.Text = value; }
+        }
+
+        public string Text
+        {
+            get { return MessageText.Text; }
+            set { MessageText.Text = value; }
+        }
+
+        public string Time
+        {
+            get { return TimeSent.Text; }
+            set { TimeSent.Text = value; }
         }
     }
 }

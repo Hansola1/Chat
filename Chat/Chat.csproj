@@ -171,6 +171,7 @@
     <Compile Include="Auth.xaml.cs">
       <DependentUpon>Auth.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\MessageStorage.cs" />
     <Compile Include="UserUseControl\UsersMessage.xaml.cs">
       <DependentUpon>UsersMessage.xaml</DependentUpon>
     </Compile>

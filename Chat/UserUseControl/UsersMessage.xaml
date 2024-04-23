@@ -7,9 +7,9 @@
              mc:Ignorable="d" d:DesignWidth="150" Height="53">
     <Grid Background="White">
         <StackPanel>
-            <TextBlock x:Name="SenderName" Text="{Binding SenderName}" />
-            <TextBlock x:Name="MessageText"  Text="{Binding MessageText}" />
-            <TextBlock x:Name="TimeSent" Text="{Binding TimeSent}" Width="50" Margin="0,0,-90,0" />
+            <TextBlock Name="SenderName" Text="" Foreground="Black" />
+            <TextBlock Name="MessageText"  Text="" Foreground="Black"/>
+            <TextBlock Name="TimeSent" Text="" Width="60" Margin="0,0,-90,0" Foreground="Black"/>
         </StackPanel>
     </Grid>
 </UserControl>

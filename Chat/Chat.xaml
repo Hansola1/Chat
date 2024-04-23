@@ -21,20 +21,32 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
+        
         <Border MinWidth="750" MaxWidth="600" Background="White" VerticalAlignment="Center" Padding="30" CornerRadius="20" Height="500" Grid.ColumnSpan="2">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="White" ShadowDepth="0"></DropShadowEffect>
             </Border.Effect>
             <StackPanel Margin="-30,-30,-30,-30">
-                <ListBox x:Name="chatListBox" Height="409" Margin="-130 5 0 0" Width="600">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBox Text="{Binding Mode=OneWay}" IsReadOnly="True" Margin="10" FontSize="20"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                    <!--TextBlock x:Name="Username" Text="UserNAme"/-->
-
-
+                <ListBox Name="Messages" HorizontalAlignment="Left" Height="390" Margin="10,28,0,0" VerticalAlignment="Top" Width="600" Background="#FF272727" Foreground="{x:Null}" VirtualizingPanel.ScrollUnit="Pixel">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="true">
+                                                <Setter Property="Background" TargetName="Bd" Value="Transparent"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
                 </ListBox>
                 <ListBox x:Name="OnlineUsersListBox" Height="409" Margin="610 -408.9 0 0" Width="120">
                     <ListBox.ItemTemplate>
@@ -50,7 +62,10 @@
 
                 <Button x:Name="SendToListBxButton" Content="Отправить" Width="121" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3"
                     FontSize="20" FontFamily="Trebuchet MS" Height="63" BorderThickness="0,0,0,1" Margin="610,-92,0,0" RenderTransformOrigin="0.485,0.957" Click="SendToListBxButton_Click"/>
+                
             </StackPanel>
+            
         </Border>
+    
     </Grid>
 </Window>
