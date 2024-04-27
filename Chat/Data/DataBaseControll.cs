@@ -19,7 +19,7 @@ namespace Chat
 {
     public class DataBaseControll : DbContext
     {
-        static string connectionString = "Host=localhost;Port=5432;Database=Chatnastya;Username=postgres;Password=Moper220;"; //"Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=root;";
+        static string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=root;"; //"Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=root;";
         NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);
 
         public void Connection()
@@ -80,7 +80,6 @@ namespace Chat
                 npgSqlConnection.Close();
                 return true;
             }
-            //commandSQL.ExecuteNonQuery();
             npgSqlConnection.Close();
             return false;
         }
@@ -109,8 +108,6 @@ namespace Chat
                 {
                     message.Add(new MessageStorage(dataReader.GetInt64(0).ToString(), dataReader.GetString(1),
                         dataReader.GetString(4), dataReader.GetString(3), dataReader.GetString(2)));
-
-                    //MessageBox.Show(dataReader.GetString(2));
                 }
                 else
                 {

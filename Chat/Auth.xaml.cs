@@ -32,8 +32,6 @@ namespace Chat
 
             if (login != null && password != null)
             {
-
-                //MessageBox.Show("Приятного общения");
                 LogIn(login, password);            
             }
         }

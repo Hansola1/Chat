@@ -4,12 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Chat.UserUseControl"
-             mc:Ignorable="d" d:DesignWidth="150" Height="53">
+             mc:Ignorable="d" d:DesignWidth="150" Height="63">
     <Grid Background="White">
         <StackPanel>
-            <TextBlock Name="SenderName" Text="" Foreground="Black" />
-            <TextBlock Name="MessageText"  Text="" Foreground="Black"/>
-            <TextBlock Name="TimeSent" Text="" Width="60" Margin="0,0,-90,0" Foreground="Black"/>
+            <TextBlock Name="SenderName" Text="" Foreground="Black" FontSize="20" FontFamily="Trebuchet MS"/>
+            <TextBlock Name="MessageText"  Text="" Foreground="Black" FontSize="20" FontFamily="Trebuchet MS"/>
+            <TextBlock x:Name="TimeSent" Text="" Width="149" FontSize="12" Margin="0 0 0 0" Foreground="Black" FontFamily="Trebuchet MS"/>
         </StackPanel>
     </Grid>
 </UserControl>

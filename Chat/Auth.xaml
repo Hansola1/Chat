@@ -22,14 +22,14 @@
             </Border.Effect>
 
             <StackPanel>
-                <TextBlock Text="Вход в систему" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" FontFamily="Showcard Gothic"/>
+                <TextBlock Text="Вход в систему" FontSize="35" FontWeight="Bold" Margin="0 0 0 20" FontFamily="Showcard Gothic"/>
 
                 <Grid Margin="0 0 0 20">
-                    <Button Click="ButtonRegClickWin" Content="Регистрация" HorizontalAlignment="Left" Width="164" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3" Margin="0,-10,0,-22" RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS"/>
-                    <Button HorizontalAlignment="Left" Content="Войти"  Width="106" Foreground="White" Margin="180,-10,0,-23" RenderTransformOrigin="0.486,0.224" FontSize="15" BorderBrush="#FFDDDDDD" FontFamily="Trebuchet MS"/>
+                    <Button Click="ButtonRegClickWin" Content="Регистрация" HorizontalAlignment="Left" Width="139" Foreground="White" BorderBrush="#FFABADB3" Margin="0,-10,0,-22" RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS"/>
+                    <Button HorizontalAlignment="Left" Content="Войти"  Width="106" Foreground="White" Margin="149,-10,0,-23" RenderTransformOrigin="0.486,0.224" FontSize="15" BorderBrush="#FFDDDDDD" FontFamily="Trebuchet MS" Background="#FF739FDD"/>
                 </Grid>
                 <TextBox x:Name="textBoxLogin" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" VerticalAlignment="Top" Margin="0,10,0,8" Cursor="Arrow"/>
-                <PasswordBox x:Name="passwordBox" FontFamily="Trebuchet MS" FontSize="13" Foreground="Gray" Height="30" VerticalAlignment="Bottom" Margin="0,0,0,0" Cursor="Arrow" ></PasswordBox>
+                <PasswordBox x:Name="passwordBox" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" VerticalAlignment="Bottom" Margin="0,0,0,0" Cursor="Arrow" ></PasswordBox>
                 <Button Click="ButtonAuthClick" HorizontalAlignment="Left" Content="Войти в аккаунт" Width="492" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3" Margin="0,10,0,-15"
                         RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS" Height="34" ></Button>
             </StackPanel>

@@ -37,15 +37,21 @@ namespace Chat
                 textBoxLogin.ToolTip = "Длина логина не более 20 знаков и не менее 3 знаков";
                 textBoxLogin.Background = Brushes.Salmon;
             }
-            else if (password.Length > 20 || password.Length < 4) 
+            if (password.Length > 20 || password.Length < 4) 
             {
                 passwordBox.ToolTip = "Длина пароля не более 20 знаков и не менее 4 знаков";
                 passwordBox.Background = Brushes.Salmon;
+            }
+            if(username.Length > 15 || username.Length < 3)
+            {
+                textBoxUserName.ToolTip = "Длина имени не более 15 знаков и не менее 3 знаков";
+                textBoxUserName.Background = Brushes.Salmon;
             }
             else
             {
                 textBoxLogin.Background = Brushes.Transparent;
                 passwordBox.Background = Brushes.Transparent;
+                textBoxUserName.Background = Brushes.Transparent;
 
                 MessageBox.Show("Ввод корректный :)");
 
