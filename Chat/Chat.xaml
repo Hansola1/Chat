@@ -57,7 +57,7 @@
                     </ListBox.ItemTemplate>
                 </ListBox-->
 
-                <!--TextBox x:Name="messageTextBox" IsReadOnly="False" /-->
+                <!--TextBox x:Name="messageTextBox"IsReadOnly="False" /-->
                 <TextBox x:Name="messageTextBox"  TextWrapping="Wrap" FontFamily="Trebuchet MS" FontSize="25" Height="63" Margin="0,10,120,0" Cursor="Arrow" Width="600" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
                 <TextBlock x:Name="Username"/>
 
