@@ -56,43 +56,30 @@ namespace Chat
                 messageTextBox.Text = "";
             }
         }
+        private void MessageTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            string message = messageTextBox.Text;
+            if (e.Key == Key.LeftAlt)
+            {
+                if (!string.IsNullOrEmpty(message) && !string.IsNullOrWhiteSpace(message))
+                {
+                    DataBase.SendMessage(message, _login, _userName);
+                    messageTextBox.Text = "";
+                }
+            }
+        } 
 
         private async void AddMessage(object sender, ElapsedEventArgs e)
         {
             List<MessageStorage> test = await Task.Run(() => DataBase.RequireMessage());
             Dispatcher.Invoke(() =>
-            {
-               
+            {            
                 Messages.Items.Clear();
                 foreach (MessageStorage message in test)
                 { 
-                    Messages.Items.Add(new UsersMessage(message.Name, message.Text, message.Time));//Convert.ToDateTime(message.Time)));
-                    //MessageBox.Show(message.Text);
+                    Messages.Items.Add(new UsersMessage(message.Name, message.Text, message.Time));
                 }
             });
         }
     }
 }
-
-
-/* private void SendToListBxButton_Click(object sender, RoutedEventArgs e)
- {
-     string message = messageTextBox.Text;
-     if (!string.IsNullOrEmpty(message) && !string.IsNullOrWhiteSpace(message))
-     {
-         chatListBox.Items.Add(message);
-         messageTextBox.Text = "";
-     }
- }
- private void MessageTextBox_KeyDown(object sender, KeyEventArgs e)
- {
-     string message = messageTextBox.Text;
-     if (e.Key == Key.Enter)
-     {
-         if (!string.IsNullOrEmpty(message) && !string.IsNullOrWhiteSpace(message))
-         {
-             chatListBox.Items.Add(message);
-             messageTextBox.Text = "";
-         }
-     }
- } */

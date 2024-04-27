@@ -59,11 +59,10 @@
 
                 <!--TextBox x:Name="messageTextBox" IsReadOnly="False" /-->
                 <TextBox x:Name="messageTextBox"  TextWrapping="Wrap" FontFamily="Trebuchet MS" FontSize="25" Height="63" Margin="0,10,120,0" Cursor="Arrow" Width="600" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" />
-                <!--PreviewKeyDown="MessageTextBox_KeyDown"/-->
                 <TextBlock x:Name="Username"/>
 
                 <Button x:Name="SendToListBxButton" Content="Отправить" Width="102" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3"
-                    FontSize="20" FontFamily="Trebuchet MS" Height="62" BorderThickness="0,0,0,1" Margin="600,-96,0,0" RenderTransformOrigin="0.485,0.957" Click="SendToListBxButton_Click"/>
+                    FontSize="20" FontFamily="Trebuchet MS" Height="62" BorderThickness="0,0,0,1" Margin="600,-96,0,0" RenderTransformOrigin="0.485,0.957" Click="SendToListBxButton_Click" PreviewKeyDown="MessageTextBox_KeyDown"/>
 
             </StackPanel>
 

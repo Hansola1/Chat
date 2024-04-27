@@ -59,5 +59,48 @@ namespace Chat
             mainWin.Show();
             this.Close();
         }
+
+        private bool isThreeInput = true;
+        private bool isTwoInput = true;
+        private void logTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                textBox.Text = "логин";
+                textBox.Foreground = System.Windows.Media.Brushes.Gray;
+                isTwoInput = true;
+            }
+        }
+        private void logTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            if (isTwoInput && textBox.Text == "логин")
+            {
+                textBox.Text = "";
+                textBox.Foreground = System.Windows.Media.Brushes.Black;
+                isTwoInput = false;
+            }
+        }
+        private void passTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passwordBox = (PasswordBox)sender;
+            if (string.IsNullOrWhiteSpace(passwordBox.Password))
+            {
+                passwordBox.Password = "пароль";
+                passwordBox.Foreground = System.Windows.Media.Brushes.Gray;
+                isThreeInput = true;
+            }
+        }
+        private void passTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordBox passwordBox = (PasswordBox)sender;
+            if (isThreeInput && passwordBox.Password == "пароль")
+            {
+                passwordBox.Password = "";
+                passwordBox.Foreground = System.Windows.Media.Brushes.Black;
+                isThreeInput = false;
+            }
+        }
     }
 }

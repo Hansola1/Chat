@@ -7,9 +7,9 @@
              mc:Ignorable="d" d:DesignWidth="150" Height="63">
     <Grid Background="White">
         <StackPanel>
-            <TextBlock Name="SenderName" Text="" Foreground="Black" FontSize="20" FontFamily="Trebuchet MS"/>
+            <TextBlock Name="SenderName" Text="" Foreground="#FF529AFF" FontSize="20" FontFamily="Trebuchet MS"/>
             <TextBlock Name="MessageText"  Text="" Foreground="Black" FontSize="20" FontFamily="Trebuchet MS"/>
-            <TextBlock x:Name="TimeSent" Text="" Width="149" FontSize="12" Margin="0 0 0 0" Foreground="Black" FontFamily="Trebuchet MS"/>
+            <TextBlock x:Name="TimeSent" Text="" Width="149" FontSize="12" Margin="0 0 0 0" Foreground="Gray" FontFamily="Trebuchet MS" HorizontalAlignment="Right"/>
         </StackPanel>
     </Grid>
 </UserControl>

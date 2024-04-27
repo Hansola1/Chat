@@ -28,9 +28,10 @@
                     <Button HorizontalAlignment="Left" Content="Регистрация" Width="164" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3" Margin="0,-10,0,-22" RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS"/>
                     <Button Click="ButtonAuthClickWin" HorizontalAlignment="Left" Content="Войти" Width="106" Foreground="White" Margin="180,-10,0,-23" RenderTransformOrigin="0.486,0.224" FontSize="15" BorderBrush="#FFDDDDDD" FontFamily="Trebuchet MS" />
                 </Grid>
-                <TextBox x:Name="textBoxUserName" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" Margin="0,10,0,8" Cursor="Arrow"/>
-                <TextBox x:Name="textBoxLogin" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" Margin="0,10,0,8" Cursor="Arrow"/>
-                <PasswordBox x:Name="passwordBox" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" VerticalAlignment="Bottom" Margin="0,0,0,0" Cursor="Arrow" ></PasswordBox>
+
+                <TextBox x:Name="textBoxUserName" Text="имя"  FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" Margin="0,10,0,0" Cursor="Arrow"  GotFocus="NameTextBox_GotFocus" LostFocus="NameTextBox_LostFocus"/>
+                <TextBox x:Name="textBoxLogin" Text="логин" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" Margin="0,10,0,8" Cursor="Arrow" GotFocus="logTextBox_GotFocus" LostFocus="logTextBox_LostFocus"/>
+                <PasswordBox x:Name="passwordBox" Password="пароль"  FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" VerticalAlignment="Bottom" Margin="0,0,0,0" Cursor="Arrow"  GotFocus="passTextBox_GotFocus" LostFocus="passTextBox_LostFocus"></PasswordBox>
                 <Button Click="ButtonRegistClick" HorizontalAlignment="Left" Content="Зарегистрироваться" Width="492" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3" Margin="0,10,0,-15"
                         RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS" Height="34"  ></Button>
             </StackPanel>

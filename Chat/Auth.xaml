@@ -16,7 +16,7 @@
         </TransformGroup>
     </Window.RenderTransform>
     <Grid Background="#FF529AFF">
-        <Border MinWidth="400" MaxWidth="550" Margin="15,0,15,0" Background="White" VerticalAlignment="Center" Padding="30" CornerRadius="20">
+        <Border MinWidth="400" MaxWidth="470" Margin="15,0,15,0" Background="White" VerticalAlignment="Center" Padding="30" CornerRadius="20">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="White" ShadowDepth="0"></DropShadowEffect>
             </Border.Effect>
@@ -28,9 +28,9 @@
                     <Button Click="ButtonRegClickWin" Content="Регистрация" HorizontalAlignment="Left" Width="139" Foreground="White" BorderBrush="#FFABADB3" Margin="0,-10,0,-22" RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS"/>
                     <Button HorizontalAlignment="Left" Content="Войти"  Width="106" Foreground="White" Margin="149,-10,0,-23" RenderTransformOrigin="0.486,0.224" FontSize="15" BorderBrush="#FFDDDDDD" FontFamily="Trebuchet MS" Background="#FF739FDD"/>
                 </Grid>
-                <TextBox x:Name="textBoxLogin" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" VerticalAlignment="Top" Margin="0,10,0,8" Cursor="Arrow"/>
-                <PasswordBox x:Name="passwordBox" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" VerticalAlignment="Bottom" Margin="0,0,0,0" Cursor="Arrow" ></PasswordBox>
-                <Button Click="ButtonAuthClick" HorizontalAlignment="Left" Content="Войти в аккаунт" Width="492" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3" Margin="0,10,0,-15"
+                <TextBox x:Name="textBoxLogin" Text="логин" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" Margin="0,10,0,8" Cursor="Arrow" Width="410" HorizontalAlignment="Left"  GotFocus="logTextBox_GotFocus" LostFocus="logTextBox_LostFocus"/>
+                <PasswordBox x:Name="passwordBox" Password="пароль" FontFamily="Trebuchet MS" FontSize="20" Foreground="Gray" Height="30" Margin="0,0,0,0" Cursor="Arrow" Width="410" HorizontalAlignment="Left"  GotFocus="passTextBox_GotFocus" LostFocus="passTextBox_LostFocus"/>
+                <Button Click="ButtonAuthClick" HorizontalAlignment="Left" Content="Войти в аккаунт" Width="410" Foreground="White" Background="#FF739FDD" BorderBrush="#FFABADB3" Margin="0,10,0,-15"
                         RenderTransformOrigin="0.486,0.224" FontSize="15" FontFamily="Trebuchet MS" Height="34" ></Button>
             </StackPanel>
         </Border>
