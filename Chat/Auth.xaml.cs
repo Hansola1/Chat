@@ -99,7 +99,7 @@ namespace Chat
             {
                 passwordBox.Password = "";
                 passwordBox.Foreground = System.Windows.Media.Brushes.Black;
-                isThreeInput = false;
+                isThreeInput = false; //
             }
         }
     }
